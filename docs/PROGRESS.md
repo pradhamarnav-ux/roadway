@@ -9,7 +9,7 @@
 ---
 
 ## Phases Tracker
-- [x] **Master Specification**: [docs/SPEC.md](file:///e:/bit%20odessey/roadway/roadway/docs/SPEC.md) created and established as single source of truth.
+- [x] **Master Specification**: [docs/SPEC.md](docs/SPEC.md) created and established as single source of truth.
 - [x] **Phase 1: Project Scaffolding, Core Schema, JWT Auth, RBAC & Seed Accounts** (COMPLETED)
 - [x] **Phase 2: Citizen Road Damage Reporting, Uploads & Map Pinning** (COMPLETED)
 - [x] **Phase 3: Multi-Factor Location Verification & Spatial Duplicate Detection** (COMPLETED)
@@ -24,20 +24,20 @@
 ## Phase 1 Deliverables & Verification Status
 
 ### 1. Project Scaffolding & Dependencies
-- **Root**: [package.json](file:///c:/Users/letha/OneDrive/Desktop/roadway/package.json) configured with one-command scripts (`npm run start`, `npm run seed`, `npm test`, `npm run install:all`).
+- **Root**: [package.json](package.json) configured with one-command scripts (`npm run start`, `npm run seed`, `npm test`, `npm run install:all`).
 - **Backend**: Node.js + Express.js REST API with CORS, JWT, bcryptjs, Mongoose with 2dsphere indexing, and zero-config embedded `mongodb-memory-server` fallback.
 - **Frontend**: React 18 + Vite + Tailwind CSS + Lucide React + React Leaflet + Recharts.
 - **Production Build**: Verified with `npm run build` in `frontend/` (1547 modules transformed, 0 errors).
 
 ### 2. Core Database Schema & Models
-- `User`: [backend/src/models/User.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/models/User.js) (roles: `citizen`, `admin`, `inspector`, alias, pointsBalance, badges).
-- `Report`: [backend/src/models/Report.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/models/Report.js) (coordinates with `2dsphere` index, damageType, verificationStatus, EXIF/device data, evidenceConsistencyScore).
-- `RoadIssue`: [backend/src/models/RoadIssue.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/models/RoadIssue.js) (aggregated defect, priorityScore, safetyOverride, repair lifecycle status, repair team assignment).
-- `Accident`: [backend/src/models/Accident.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/models/Accident.js) (4 attribution tiers, injury severity, injuries count, spatial index).
-- `RewardLedger`: [backend/src/models/RewardLedger.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/models/RewardLedger.js) (append-only ledger with unique `idempotencyKey`).
+- `User`: [backend/src/models/User.js](backend/src/models/User.js) (roles: `citizen`, `admin`, `inspector`, alias, pointsBalance, badges).
+- `Report`: [backend/src/models/Report.js](backend/src/models/Report.js) (coordinates with `2dsphere` index, damageType, verificationStatus, EXIF/device data, evidenceConsistencyScore).
+- `RoadIssue`: [backend/src/models/RoadIssue.js](backend/src/models/RoadIssue.js) (aggregated defect, priorityScore, safetyOverride, repair lifecycle status, repair team assignment).
+- `Accident`: [backend/src/models/Accident.js](backend/src/models/Accident.js) (4 attribution tiers, injury severity, injuries count, spatial index).
+- `RewardLedger`: [backend/src/models/RewardLedger.js](backend/src/models/RewardLedger.js) (append-only ledger with unique `idempotencyKey`).
 
 ### 3. JWT Authentication & Role-Based Authorization
-- **Middleware**: [backend/src/middleware/auth.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/middleware/auth.js) (`authenticate` Bearer JWT token, `authorize` role guard).
+- **Middleware**: [backend/src/middleware/auth.js](backend/src/middleware/auth.js) (`authenticate` Bearer JWT token, `authorize` role guard).
 - **Protected Routes**:
   - `/api/auth/register` (Public)
   - `/api/auth/login` (Public)
@@ -54,52 +54,52 @@ All accounts seeded and verified with active passwords:
 - 🔍 **Inspector**: `inspector@roadwise.ai` / `Inspector@123` (Name: Inspector Vikram Singh)
 
 ### 5. Frontend Pages & UI Features
-- **Navbar**: [frontend/src/components/Navbar.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/components/Navbar.jsx) with role pill, point balance, dynamic nav.
-- **Login Page**: [frontend/src/pages/Login.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/Login.jsx) with **1-Click Quick Demo Fill Buttons** for all 3 seeded accounts.
-- **Register Page**: [frontend/src/pages/Register.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/Register.jsx) with role selector.
-- **Dashboard**: [frontend/src/pages/Dashboard.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/Dashboard.jsx) with role-adaptive dashboards and an **interactive Live RBAC verification widget** displaying real 200 OK vs 403 Forbidden API responses.
+- **Navbar**: [frontend/src/components/Navbar.jsx](frontend/src/components/Navbar.jsx) with role pill, point balance, dynamic nav.
+- **Login Page**: [frontend/src/pages/Login.jsx](frontend/src/pages/Login.jsx) with **1-Click Quick Demo Fill Buttons** for all 3 seeded accounts.
+- **Register Page**: [frontend/src/pages/Register.jsx](frontend/src/pages/Register.jsx) with role selector.
+- **Dashboard**: [frontend/src/pages/Dashboard.jsx](frontend/src/pages/Dashboard.jsx) with role-adaptive dashboards and an **interactive Live RBAC verification widget** displaying real 200 OK vs 403 Forbidden API responses.
 
 ### 6. Pure Algorithm Modules Skeleton
-- [backend/src/algorithms/priorityScoring.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/algorithms/priorityScoring.js) (Verified spec benchmark = exactly 73.75).
-- [backend/src/algorithms/locationVerification.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/algorithms/locationVerification.js) (Haversine distance & multi-factor consistency).
-- [backend/src/algorithms/duplicateDetection.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/algorithms/duplicateDetection.js) (Geospatial radius buffer & token similarity).
-- [backend/src/algorithms/accidentAnalysis.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/algorithms/accidentAnalysis.js) (4 ethical attribution tiers).
-- [backend/src/algorithms/repairOptimization.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/algorithms/repairOptimization.js) (0/1 Knapsack DP optimizer vs heuristics).
+- [backend/src/algorithms/priorityScoring.js](backend/src/algorithms/priorityScoring.js) (Verified spec benchmark = exactly 73.75).
+- [backend/src/algorithms/locationVerification.js](backend/src/algorithms/locationVerification.js) (Haversine distance & multi-factor consistency).
+- [backend/src/algorithms/duplicateDetection.js](backend/src/algorithms/duplicateDetection.js) (Geospatial radius buffer & token similarity).
+- [backend/src/algorithms/accidentAnalysis.js](backend/src/algorithms/accidentAnalysis.js) (4 ethical attribution tiers).
+- [backend/src/algorithms/repairOptimization.js](backend/src/algorithms/repairOptimization.js) (0/1 Knapsack DP optimizer vs heuristics).
 
 ---
 
 ## Phase 2 Deliverables & Verification Status
 
 ### 1. Citizen Damage Reporting Form & Ingestion
-- **Form End-to-End**: [frontend/src/pages/ReportHazard.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/ReportHazard.jsx) with all 6 damage categories (Pothole, Severe Crack, Rutting, Manhole Collapse, Erosion, Other) and 4 severity ratings (Low, Medium, High, Critical).
-- **Safe Photo Upload**: [backend/src/middleware/upload.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/middleware/upload.js) with randomized filenames, 5MB ceiling, and strict JPEG/PNG/WebP MIME and extension validation.
-- **EXIF GPS Metadata Extraction**: [backend/src/utils/exifExtractor.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/utils/exifExtractor.js) parsing device GPS tags from camera photos.
+- **Form End-to-End**: [frontend/src/pages/ReportHazard.jsx](frontend/src/pages/ReportHazard.jsx) with all 6 damage categories (Pothole, Severe Crack, Rutting, Manhole Collapse, Erosion, Other) and 4 severity ratings (Low, Medium, High, Critical).
+- **Safe Photo Upload**: [backend/src/middleware/upload.js](backend/src/middleware/upload.js) with randomized filenames, 5MB ceiling, and strict JPEG/PNG/WebP MIME and extension validation.
+- **EXIF GPS Metadata Extraction**: [backend/src/utils/exifExtractor.js](backend/src/utils/exifExtractor.js) parsing device GPS tags from camera photos.
 - **Geolocation & Interactive Map**:
   - "Use My Current Location" via `navigator.geolocation` with graceful permission error fallbacks.
-  - Interactive draggable Leaflet map with custom SVG map pin in [frontend/src/components/LocationPickerMap.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/components/LocationPickerMap.jsx).
+  - Interactive draggable Leaflet map with custom SVG map pin in [frontend/src/components/LocationPickerMap.jsx](frontend/src/components/LocationPickerMap.jsx).
 - **Report Lifecycle & Tracking**:
   - Unique public ticket ID generation (`RW-2026-XXXX`).
   - Initial status strictly preserved as `UNVERIFIED`.
-  - [frontend/src/pages/MyReports.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/MyReports.jsx) showing citizen's active reports and evidence consistency scores.
-  - [frontend/src/pages/ReportDetails.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/ReportDetails.jsx) displaying full audit trail, map coordinates, EXIF match notes, and repair timeline.
+  - [frontend/src/pages/MyReports.jsx](frontend/src/pages/MyReports.jsx) showing citizen's active reports and evidence consistency scores.
+  - [frontend/src/pages/ReportDetails.jsx](frontend/src/pages/ReportDetails.jsx) displaying full audit trail, map coordinates, EXIF match notes, and repair timeline.
 
 ---
 
 ## Phase 3 Deliverables & Verification Status
 
 ### 1. Location Evidence & Consistency Engine
-- **Engine Logic**: [backend/src/algorithms/locationVerification.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/algorithms/locationVerification.js) evaluating device-vs-reported distance, EXIF tags, independent nearby reports, and inspector on-site verification overrides.
+- **Engine Logic**: [backend/src/algorithms/locationVerification.js](backend/src/algorithms/locationVerification.js) evaluating device-vs-reported distance, EXIF tags, independent nearby reports, and inspector on-site verification overrides.
 - **Statuses**: `UNVERIFIED`, `CORROBORATED`, `LOCATION_MISMATCH`, `NEEDS_INSPECTION`, `INSPECTOR_VERIFIED`, `REJECTED`.
 - **Explainable Scoring**: 0–100 consistency score storing passed/failed audit checks and reasons.
-- **Verification Queue Page**: [frontend/src/pages/VerificationQueue.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/VerificationQueue.jsx) for municipal operators with filter tabs, evidence score bars, inspector modal sign-off, and one-click status transitions.
+- **Verification Queue Page**: [frontend/src/pages/VerificationQueue.jsx](frontend/src/pages/VerificationQueue.jsx) for municipal operators with filter tabs, evidence score bars, inspector modal sign-off, and one-click status transitions.
 
 ### 2. Spatial Duplicate Detection & Defect Consolidation
-- **Pipeline**: [backend/src/algorithms/duplicateDetection.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/algorithms/duplicateDetection.js) executing radius queries (configurable default: 30m), damage type matching (+35 pts), description token similarity (+20 pts), and temporal proximity (+10 pts).
+- **Pipeline**: [backend/src/algorithms/duplicateDetection.js](backend/src/algorithms/duplicateDetection.js) executing radius queries (configurable default: 30m), damage type matching (+35 pts), description token similarity (+20 pts), and temporal proximity (+10 pts).
 - **Auto-Link vs Review**:
   - Score `>= 80%`: Highlighted as high-confidence duplicate (auto-link suggested).
   - Score `50% - 79%`: Flagged for administrative review.
   - Score `< 50%`: Kept as distinct defect.
-- **Duplicate Review Page**: [frontend/src/pages/DuplicateReview.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/DuplicateReview.jsx) with side-by-side photo/text comparisons, distance in meters, and one-click "Merge into Single Defect" / "Keep Distinct" actions.
+- **Duplicate Review Page**: [frontend/src/pages/DuplicateReview.jsx](frontend/src/pages/DuplicateReview.jsx) with side-by-side photo/text comparisons, distance in meters, and one-click "Merge into Single Defect" / "Keep Distinct" actions.
 - **Data Model Relationship**: Multiple citizen reports (`Report`) consolidate into a single ground-truth municipal defect (`RoadIssue`).
 
 ### 3. Dashboard Counts & Triage Metrics
@@ -108,7 +108,7 @@ All accounts seeded and verified with active passwords:
   - Unique ground-truth road defects
   - Suspected duplicates within 30m buffer
   - Corroborated / verified reports
-- [frontend/src/pages/Dashboard.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/Dashboard.jsx) updated with real-time reactive metrics cards for city administrators.
+- [frontend/src/pages/Dashboard.jsx](frontend/src/pages/Dashboard.jsx) updated with real-time reactive metrics cards for city administrators.
 
 ---
 
@@ -116,14 +116,14 @@ All accounts seeded and verified with active passwords:
 
 ### 1. Ethical Attribution Tiers & Core Principles (Spec Section 7)
 - **Ethical Cardinal Rule**: Nearby accidents are **NEVER automatically counted as pothole-caused**.
-- Four Ethical Tiers implemented in [backend/src/algorithms/accidentAnalysis.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/algorithms/accidentAnalysis.js):
+- Four Ethical Tiers implemented in [backend/src/algorithms/accidentAnalysis.js](backend/src/algorithms/accidentAnalysis.js):
   1. `NEARBY_ACCIDENT`: Occurred within 50m of defect; strictly non-causal, excluded from injury counts and defect causation metrics.
   2. `SUSPECTED_CONTRIBUTION`: Citizen or witness reports driver swerving/braking to avoid defect.
   3. `DOCUMENTED_CONTRIBUTION`: Formal police incident log (FIR) or paramedic report documents defect.
   4. `CONFIRMED_CONTRIBUTION`: Municipal engineering investigation verifies defect causation; triggers **Mandatory Safety Override** (`safetyOverride: true`, `priorityLevel: 'CRITICAL'`).
 
 ### 2. Evidence Storage, Verification Status & Privacy Safeguards
-- **Evidence Storage**: [backend/src/models/Accident.js](file:///c:/Users/letha/OneDrive/Desktop/roadway/backend/src/models/Accident.js) supports photo upload (`photoUrl`), evidence file array (`evidenceFiles`), official police reference (`policeReportRef`), and engineering audit notes (`evidenceNotes`).
+- **Evidence Storage**: [backend/src/models/Accident.js](backend/src/models/Accident.js) supports photo upload (`photoUrl`), evidence file array (`evidenceFiles`), official police reference (`policeReportRef`), and engineering audit notes (`evidenceNotes`).
 - **Verification Status**: `verificationStatus` lifecycle (`UNVERIFIED`, `UNDER_REVIEW`, `VERIFIED`, `REJECTED`). False/rejected reports are automatically excluded from defect attribution.
 - **Injury Severity**: Granular ratings (`none`, `minor`, `serious`, `fatal`) with distinct injury count tracking.
 - **Minimal Personal Data Guarantee**: Zero victim names, driver's licenses, or vehicle registration numbers collected or stored. Citizen reporters displayed solely via safe non-identifying aliases.
@@ -137,10 +137,10 @@ Every ground-truth defect (`RoadIssue`) maintains five distinct counts:
 5. `totalInjuries`: Cumulative human injuries attributed to the defect (strictly excluding nearby accidents).
 
 ### 4. Frontend Web Interfaces
-- **Citizen Report Accident Page**: [frontend/src/pages/ReportAccident.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/ReportAccident.jsx) with interactive coordinates picker map, minimal PII guarantee banner, photo/evidence uploader, and clear 4-tier explanations.
-- **Admin Accident Evidence Review Console**: [frontend/src/pages/AccidentReview.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/AccidentReview.jsx) with 5-count metrics strip, attribution tier and verification status calibration dropdowns, full evidence image preview modal, and pulsing safety override alerts.
-- **Defect Detail Integration**: [frontend/src/pages/ReportDetails.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/ReportDetails.jsx) displaying the linked defect's 5 distinct accident counts and ethical disclaimer.
-- **Command Center Dashboard**: [frontend/src/pages/Dashboard.jsx](file:///c:/Users/letha/OneDrive/Desktop/roadway/frontend/src/pages/Dashboard.jsx) updated with citywide Phase 4 accident triage metrics and direct quick actions.
+- **Citizen Report Accident Page**: [frontend/src/pages/ReportAccident.jsx](frontend/src/pages/ReportAccident.jsx) with interactive coordinates picker map, minimal PII guarantee banner, photo/evidence uploader, and clear 4-tier explanations.
+- **Admin Accident Evidence Review Console**: [frontend/src/pages/AccidentReview.jsx](frontend/src/pages/AccidentReview.jsx) with 5-count metrics strip, attribution tier and verification status calibration dropdowns, full evidence image preview modal, and pulsing safety override alerts.
+- **Defect Detail Integration**: [frontend/src/pages/ReportDetails.jsx](frontend/src/pages/ReportDetails.jsx) displaying the linked defect's 5 distinct accident counts and ethical disclaimer.
+- **Command Center Dashboard**: [frontend/src/pages/Dashboard.jsx](frontend/src/pages/Dashboard.jsx) updated with citywide Phase 4 accident triage metrics and direct quick actions.
 
 ---
 
@@ -287,7 +287,7 @@ Citywide Verified Accidents: 1
 - Evaluates total spend, modeled benefit, issues repaired, and budget utilization % across all four strategies.
 
 ### 4. Interactive Dashboards & User Interface
-- **Budget Optimization Dashboard** ([frontend/src/pages/BudgetOptimization.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/pages/BudgetOptimization.jsx)):
+- **Budget Optimization Dashboard** ([frontend/src/pages/BudgetOptimization.jsx](frontend/src/pages/BudgetOptimization.jsx)):
   - Dynamic budget input and interactive slider ($10k - $250k) with preset buttons.
   - Dynamic recomputation: changing the budget slider recomputes the optimal plan and comparison metrics in real-time.
   - Stat cards: Total Spend, Remaining Funds, Modeled Benefit, Budget Utilization, Deficit Alert.
@@ -295,7 +295,7 @@ Citywide Verified Accidents: 1
   - Recharts comparative BarChart and detailed comparison table across all 4 strategies.
   - Tabbed repair candidate queue with selection reasons, benefit density, and deferral audit logs.
   - "Apply Repair Plan" action to schedule selected defects.
-- **Priority Analysis Dashboard** ([frontend/src/pages/PriorityAnalysis.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/pages/PriorityAnalysis.jsx)):
+- **Priority Analysis Dashboard** ([frontend/src/pages/PriorityAnalysis.jsx](frontend/src/pages/PriorityAnalysis.jsx)):
   - Recharts Bar Chart showing average normalized scores across all 6 criteria ($S, T, A, C, E, W$).
   - Priority level distribution chart (Critical, High, Medium, Low).
   - Safety Override rapid inspection alert banner.
@@ -499,7 +499,7 @@ Citywide Verified Accidents: 1
 ## Phase 6 Deliverables & Verification Status
 
 ### 1. Interactive City GIS Map (Spec Section 10)
-- **Component**: [frontend/src/pages/CityMap.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/pages/CityMap.jsx) built with React Leaflet.
+- **Component**: [frontend/src/pages/CityMap.jsx](frontend/src/pages/CityMap.jsx) built with React Leaflet.
 - **Marker Styling by Priority**:
   - 🔴 **Critical ($\ge 85$)**: Red marker pin with prominent badge.
   - 🟠 **High ($70 - 84$)**: Amber/orange marker pin.
@@ -524,22 +524,22 @@ Citywide Verified Accidents: 1
 ### 2. 7-Stage Repair Lifecycle Workflow (Spec Section 11)
 - **State Machine**: Strict sequential workflow transitions:
   $$\text{REPORTED} \longrightarrow \text{VERIFIED} \longrightarrow \text{SCHEDULED} \longrightarrow \text{ASSIGNED} \longrightarrow \text{IN\_PROGRESS} \longrightarrow \text{INSPECTED} \longrightarrow \text{CLOSED}$$
-- **Controller**: [backend/src/controllers/repairController.js](file:///e:/bit%20odessey/roadway/roadway/backend/src/controllers/repairController.js)
+- **Controller**: [backend/src/controllers/repairController.js](backend/src/controllers/repairController.js)
   - `scheduleRepair` (`PATCH /api/repairs/:id/schedule`): Admin approves repair plan, assigns scheduled date, generates official Work Order number (`WO-2026-XXXX`), and records in `lifecycleHistory`.
   - `assignRepairTeam` (`PATCH /api/repairs/:id/assign`): Admin dispatches to one of 4 municipal repair crews (`CREW-ALPHA`, `CREW-BETA`, `CREW-GAMMA`, `CREW-DELTA`) and assigns field inspector.
   - `startRepair` (`PATCH /api/repairs/:id/start`): Transitions status to `IN_PROGRESS`.
   - `submitInspectionEvidence` (`POST /api/repairs/:id/inspect`): Inspector records on-site findings, certifies quality, and uploads photo evidence via Multer.
   - `closeRepair` (`PATCH /api/repairs/:id/close`): Admin signs off work order, sets `completedDate`, and automatically cascades `INSPECTOR_VERIFIED` to all linked citizen complaints.
-- **Interactive Console**: [frontend/src/pages/RepairWorkflow.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/pages/RepairWorkflow.jsx) with tabbed stage views, action modals (Schedule Work Order, Assign Crew, Mark In Progress, Admin Sign-off & Close), and municipal crew directory.
+- **Interactive Console**: [frontend/src/pages/RepairWorkflow.jsx](frontend/src/pages/RepairWorkflow.jsx) with tabbed stage views, action modals (Schedule Work Order, Assign Crew, Mark In Progress, Admin Sign-off & Close), and municipal crew directory.
 
 ### 3. Field Inspector Console & Task Assignment
-- **Console Page**: [frontend/src/pages/InspectorConsole.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/pages/InspectorConsole.jsx)
+- **Console Page**: [frontend/src/pages/InspectorConsole.jsx](frontend/src/pages/InspectorConsole.jsx)
 - **Task Queue**: `GET /api/repairs/inspector/tasks` returns issues assigned to the inspector or pending verification in their zone.
 - **Evidence Upload**: On-site modal with technical inspection checklist, completion photo file input, measurement notes, and formal inspector certification.
 
 ### 4. Citizen Complaint Tracking
-- **Lifecycle Progress Tracker**: [frontend/src/pages/ReportDetails.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/pages/ReportDetails.jsx) updated with dynamic 7-stage visual timeline showing completed milestones, work order reference, assigned crew, and inspector notes.
-- **List Badges**: [frontend/src/pages/MyReports.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/pages/MyReports.jsx) shows live repair stage pills (`Repair: SCHEDULED`, `Repair: CLOSED`).
+- **Lifecycle Progress Tracker**: [frontend/src/pages/ReportDetails.jsx](frontend/src/pages/ReportDetails.jsx) updated with dynamic 7-stage visual timeline showing completed milestones, work order reference, assigned crew, and inspector notes.
+- **List Badges**: [frontend/src/pages/MyReports.jsx](frontend/src/pages/MyReports.jsx) shows live repair stage pills (`Repair: SCHEDULED`, `Repair: CLOSED`).
 
 ### 5. Command Center Analytics Overview
 - **Analytics Endpoint**: `GET /api/repairs/analytics/overview` (Admin/Inspector only).
@@ -805,7 +805,7 @@ Citywide Verified Accidents: 1
   - `repairController.closeRepair`: Promotes linked citizen reports to `INSPECTOR_VERIFIED` and credits pending points upon repair closure.
 
 ### 2. Append-Only Reward Ledger & Idempotency Guarantee (Spec Section 12)
-- **Schema**: [backend/src/models/RewardLedger.js](file:///e:/bit%20odessey/roadway/roadway/backend/src/models/RewardLedger.js)
+- **Schema**: [backend/src/models/RewardLedger.js](backend/src/models/RewardLedger.js)
   - Fields: `idempotencyKey`, `user`, `report`, `actionType`, `pointsDelta`, `balanceAfter`, `description`, `isSynthetic`, `createdAt`.
   - Immutable audit trail: No update or delete operations permitted on ledger documents.
 - **Deterministic SHA-256 Idempotency Keys**:
@@ -850,15 +850,15 @@ Citywide Verified Accidents: 1
   5. `PERK-CAFE-VOUCHER`: Central Library Cafe Beverage Voucher (50 pts).
 
 ### 7. Frontend Integration & Pages
-- **Rewards Hub Page**: [frontend/src/pages/RewardsHub.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/pages/RewardsHub.jsx)
+- **Rewards Hub Page**: [frontend/src/pages/RewardsHub.jsx](frontend/src/pages/RewardsHub.jsx)
   - 3 Glassmorphic Navigation Tabs:
     1. **Civic Wallet & Badges**: 4 KPI metric cards, badge achievement shelf with locked/unlocked states, and full ledger transaction table with status pills.
     2. **Simulated Perks Store**: Municipal voucher cards, balance affordability indicator, redemption confirmation modal, and digital voucher card with copy-to-clipboard functionality.
     3. **Top-100 Leaderboard**: Ranked leaderboard with Gold/Silver/Bronze medals, current user rank banner, and live Privacy Preferences form (real-time alias and opt-out toggles).
 - **Navigation & Dashboard Links**:
-  - [frontend/src/components/Navbar.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/components/Navbar.jsx): Clickable points badge pill in header and "Rewards" nav link.
-  - [frontend/src/pages/Dashboard.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/pages/Dashboard.jsx): Phase 7 banner, RoadWise Rewards Hub action card, and Live RBAC wallet endpoint test button.
-  - [frontend/src/App.jsx](file:///e:/bit%20odessey/roadway/roadway/frontend/src/App.jsx): Protected `/rewards` route.
+  - [frontend/src/components/Navbar.jsx](frontend/src/components/Navbar.jsx): Clickable points badge pill in header and "Rewards" nav link.
+  - [frontend/src/pages/Dashboard.jsx](frontend/src/pages/Dashboard.jsx): Phase 7 banner, RoadWise Rewards Hub action card, and Live RBAC wallet endpoint test button.
+  - [frontend/src/App.jsx](frontend/src/App.jsx): Protected `/rewards` route.
 
 ---
 
@@ -1043,7 +1043,7 @@ Command: `node smokeTestPhase7.js` (working directory: `backend/`)
 - **Ethical Benchmark & Synthetic Label**: Every synthetic record is explicitly tagged `isSynthetic: true` with standard fictional disclaimer.
 
 ### 2. Master 15-Area Test Checklist (`npm test`)
-All 15 required functional areas tested via master test suite [backend/test/fifteenAreasChecklist.test.js](file:///e:/bit%20odessey/roadway/roadway/backend/test/fifteenAreasChecklist.test.js) alongside modular phase test suites:
+All 15 required functional areas tested via master test suite [backend/test/fifteenAreasChecklist.test.js](backend/test/fifteenAreasChecklist.test.js) alongside modular phase test suites:
 - **Total Tests**: **106 tests across 19 suites passing with 0 failures** in ~2.1 seconds.
 - **Single Test Command**: Executable via `npm test` from root workspace or `npm.cmd test` / `npm test` in `backend/`.
 
@@ -1072,7 +1072,7 @@ All 15 required functional areas tested via master test suite [backend/test/fift
 - **Production Build**: Verified with `npm run build` in `frontend/` (2401 modules transformed, 0 errors).
 
 ### 4. Automated 12-Step Live Demo Execution Output
-The end-to-end demo flow was executed against the real running backend via [backend/runLiveDemoFlow.js](file:///e:/bit%20odessey/roadway/roadway/backend/runLiveDemoFlow.js):
+The end-to-end demo flow was executed against the real running backend via [backend/runLiveDemoFlow.js](backend/runLiveDemoFlow.js):
 
 ```
 ================================================================================

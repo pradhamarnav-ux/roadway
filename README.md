@@ -2,11 +2,11 @@
 > **Problem Statement #13: Intelligent Civic Coordination, Defect Triage, and Algorithmic Repair Optimization**  
 > *Target Stack: MERN (MongoDB + Express.js + React 18/Vite + Node.js 24+) with Leaflet GIS & Tailwind CSS*
 
-[![Build Status](https://img.shields.io/badge/Build-Passing-emerald)](file:///e:/bit%20odessey/roadway/roadway)
-[![Tests](https://img.shields.io/badge/Tests-106%20Passed-brightgreen)](file:///e:/bit%20odessey/roadway/roadway)
-[![Test Suites](https://img.shields.io/badge/Suites-19%20Passing-success)](file:///e:/bit%20odessey/roadway/roadway)
-[![Coverage](https://img.shields.io/badge/Spec%20Phases-1%20through%208%20Complete-blue)](file:///e:/bit%20odessey/roadway/roadway/docs/PROGRESS.md)
-[![License](https://img.shields.io/badge/License-MIT-slate)](file:///e:/bit%20odessey/roadway/roadway)
+[![Build Status](https://img.shields.io/badge/Build-Passing-emerald)](https://github.com/pradhamarnav-ux/roadway)
+[![Tests](https://img.shields.io/badge/Tests-106%20Passed-brightgreen)](https://github.com/pradhamarnav-ux/roadway)
+[![Test Suites](https://img.shields.io/badge/Suites-19%20Passing-success)](https://github.com/pradhamarnav-ux/roadway)
+[![Coverage](https://img.shields.io/badge/Spec%20Phases-1%20through%208%20Complete-blue)](docs/PROGRESS.md)
+[![License](https://img.shields.io/badge/License-MIT-slate)](https://github.com/pradhamarnav-ux/roadway)
 
 ---
 
@@ -207,4 +207,4 @@ $$\max \sum_{i \in \text{Verified}} \text{Benefit}_i \cdot x_i \quad \text{subje
 
 ## 9. Live Demo Walkthrough
 
-For the step-by-step evaluator walkthrough covering the entire end-to-end civic repair lifecycle, refer to **[docs/DEMO.md](file:///e:/bit%20odessey/roadway/roadway/docs/DEMO.md)**.
+For the step-by-step evaluator walkthrough covering the entire end-to-end civic repair lifecycle, refer to **[docs/DEMO.md](docs/DEMO.md)**.
